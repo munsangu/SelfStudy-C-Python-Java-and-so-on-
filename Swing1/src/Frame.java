@@ -1,5 +1,8 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,13 +18,34 @@ public class Frame {
 		JPanel panel = new JPanel();
 		JLabel label = new JLabel("Some text");
 		JButton btn1 = new JButton("Click this");
+		JButton btn2 = new JButton("Exit");
 		JTextArea txtArea = new JTextArea();
 		JTextField txtField = new JTextField(200);
+		JPanel btnPanel = new JPanel();
+		panel.setLayout(new BorderLayout());
 		
-		panel.setLayout(new BorderLayout());// 자기가 원하는 위치에 배치
-		panel.add(btn1, BorderLayout.WEST);
+		btnPanel.add(btn1);
+		btnPanel.add(btn2);
+		panel.add(btnPanel, BorderLayout.WEST);
 		panel.add(label, BorderLayout.NORTH);
 		panel.add(txtArea, BorderLayout.CENTER);
+		
+		btn1.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				/*txtArea.append("You are amazing\n");*/
+				label.setText(txtArea.getText());
+			}
+		});
+		
+		btn2.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				System.exit(0);
+			}
+		});
 		
 		frame.add(panel);
 		
