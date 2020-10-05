@@ -8,7 +8,7 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
-
+// 간단한 로그인
 public class Lesson3 {
 
 	private JFrame frame;

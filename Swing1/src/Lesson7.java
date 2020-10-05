@@ -3,7 +3,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-
+// JTable 활용 표 만들기
 public class Lesson7 
 {
 	public static void main(String[] args) 

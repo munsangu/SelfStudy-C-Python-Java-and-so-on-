@@ -6,7 +6,7 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+// 윈도우 빌더 페이지 이동
 public class Lesson6 {
 
 	private JFrame frame;
