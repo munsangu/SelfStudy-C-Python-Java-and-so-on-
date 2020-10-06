@@ -77,12 +77,140 @@ public class Customer_App {
 		welcomePanel.setBounds(0, 0, 942, 593);
 		frame.setSize(971,640);
 		frame.getContentPane().setLayout(null);
-		
-		JPanel tablePanel = new JPanel();
-		tablePanel.setBounds(0, 0, 965, 579);
-		tablePanel.setVisible(true);
 		String[][] data = customer.getCustomers();
 		String[] headers = new String[] {"ID","Name","PHONE","GENDER","AGE","NOTE"};
+		
+		ImagePanel tablePanel = new ImagePanel(new ImageIcon("C:/git/msw/Swing1/image/List.jpg").getImage());
+		tablePanel.setBounds(0, 0, 965, 579);
+		tablePanel.setVisible(false);
+		ImagePanel mainPanel = new ImagePanel(new ImageIcon("C:/git/msw/Swing1/image/Register.jpg").getImage());
+		mainPanel.setBounds(0, 0, 954, 593);
+		frame.getContentPane().add(mainPanel);
+		mainPanel.setBackground(Color.WHITE);
+		mainPanel.setLayout(null);
+		mainPanel.setVisible(false);
+		
+		JLabel lblWelcomeThisIs = new JLabel("Welcome This is Main Panel");
+		lblWelcomeThisIs.setBackground(Color.GRAY);
+		lblWelcomeThisIs.setFont(new Font("MS Mincho", Font.BOLD, 23));
+		lblWelcomeThisIs.setBounds(546, 25, 394, 59);
+		mainPanel.add(lblWelcomeThisIs);
+		
+		JLabel lblName = new JLabel("Name");
+		lblName.setHorizontalAlignment(SwingConstants.CENTER);
+		lblName.setFont(new Font("±¼¸²", Font.BOLD, 22));
+		lblName.setBounds(184, 238, 159, 41);
+		mainPanel.add(lblName);
+		
+		JLabel lblAge = new JLabel("Age");
+		lblAge.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAge.setFont(new Font("±¼¸²", Font.BOLD, 22));
+		lblAge.setBounds(184, 333, 159, 41);
+		mainPanel.add(lblAge);
+		
+		JLabel lblGender = new JLabel("Gender");
+		lblGender.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGender.setFont(new Font("±¼¸²", Font.BOLD, 22));
+		lblGender.setBounds(184, 419, 159, 41);
+		mainPanel.add(lblGender);
+		
+		JLabel lblPhone = new JLabel("Phone");
+		lblPhone.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPhone.setFont(new Font("±¼¸²", Font.BOLD, 22));
+		lblPhone.setBounds(535, 143, 159, 41);
+		mainPanel.add(lblPhone);
+		
+		JLabel lblBirthday = new JLabel("Birthday");
+		lblBirthday.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBirthday.setFont(new Font("±¼¸²", Font.BOLD, 22));
+		lblBirthday.setBounds(535, 238, 159, 41);
+		mainPanel.add(lblBirthday);
+		
+		JLabel lblNote = new JLabel("Note");
+		lblNote.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNote.setFont(new Font("±¼¸²", Font.BOLD, 22));
+		lblNote.setBounds(535, 324, 159, 41);
+		mainPanel.add(lblNote);
+		
+		name = new JTextField();
+		name.setFont(new Font("±¼¸²", Font.PLAIN, 19));
+		name.setBounds(311, 230, 241, 62);
+		mainPanel.add(name);
+		name.setColumns(10);
+		
+		age = new JTextField();
+		age.setFont(new Font("±¼¸²", Font.PLAIN, 19));
+		age.setColumns(10);
+		age.setBounds(311, 332, 241, 62);
+		mainPanel.add(age);
+		
+		phone = new JTextField();
+		phone.setFont(new Font("±¼¸²", Font.PLAIN, 19));
+		phone.setColumns(10);
+		phone.setBounds(665, 135, 241, 62);
+		mainPanel.add(phone);
+		
+		birthday = new JTextField();
+		birthday.setFont(new Font("±¼¸²", Font.PLAIN, 19));
+		birthday.setColumns(10);
+		birthday.setBounds(665, 237, 241, 62);
+		mainPanel.add(birthday);
+		
+		JComboBox gender = new JComboBox(new String[] {"Male","Female"});
+		gender.setFont(new Font("±¼¸²", Font.PLAIN, 19));
+		gender.setBackground(Color.WHITE);
+		gender.setBounds(309, 430, 243, 24);
+		mainPanel.add(gender);
+		
+		JTextArea noteTxt = new JTextArea();
+		noteTxt.setBounds(665, 324, 241, 145);
+		noteTxt.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+		mainPanel.add(noteTxt);
+		
+		JButton btnNewButton_1 = new JButton("Submit");
+		btnNewButton_1.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				String idTxt = ID.getText();
+				String nameTxt = name.getText();
+				String ageTxt = age.getText();
+				String phoneTxt = phone.getText();
+				String genderTxt = gender.getSelectedItem().toString();
+				String note = noteTxt.getText();
+				customer.createCustomer(idTxt, nameTxt, phoneTxt, genderTxt, ageTxt, note);
+				JOptionPane.showMessageDialog(null, "Your data has been saved successfully");
+				mainPanel.setVisible(false);
+			}
+		});
+		btnNewButton_1.setBounds(278, 484, 330, 49);
+		mainPanel.add(btnNewButton_1);
+		
+		JLabel lblId = new JLabel("ID");
+		lblId.setHorizontalAlignment(SwingConstants.CENTER);
+		lblId.setFont(new Font("±¼¸²", Font.BOLD, 22));
+		lblId.setBounds(184, 163, 159, 41);
+		mainPanel.add(lblId);
+		
+		ID = new JTextField();
+		ID.setFont(new Font("±¼¸²", Font.PLAIN, 19));
+		ID.setColumns(10);
+		ID.setBounds(311, 155, 241, 62);
+		mainPanel.add(ID);
+		
+		JButton btnNewButton_2 = new JButton("");
+		btnNewButton_2.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		btnNewButton_2.addActionListener(new ActionListener() 
+			{
+			public void actionPerformed(ActionEvent e) 
+			{
+				mainPanel.setVisible(false);
+				tablePanel.setVisible(true);
+			}
+		});
+		btnNewButton_2.setIcon(new ImageIcon("C:\\git\\msw\\Swing1\\image\\ListButton.jpg"));
+		btnNewButton_2.setBounds(14, 377, 176, 49);
+		mainPanel.add(btnNewButton_2);
 		tablePanel.setLayout(null);
 		JTable table = new JTable(data, headers);
 		table.setRowHeight(30);
@@ -92,15 +220,29 @@ public class Customer_App {
 		table.setPreferredScrollableViewportSize(new Dimension(800,400));
 		
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(72, 103, 802, 433);
+		scrollPane.setBounds(151, 180, 710, 387);
 		tablePanel.add(scrollPane);
 		frame.getContentPane().add(tablePanel);
 		
 		search = new JTextField();
 		search.setFont(new Font("MS Mincho", Font.PLAIN, 20));
-		search.setBounds(72, 55, 802, 36);
+		search.setBounds(151, 132, 710, 36);
 		tablePanel.add(search);
 		search.setColumns(10);
+		
+		JButton btnNewButton_3 = new JButton("");
+		btnNewButton_3.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		btnNewButton_3.addActionListener(new ActionListener() 
+			{
+			public void actionPerformed(ActionEvent e) 
+			{
+				tablePanel.setVisible(false);
+				mainPanel.setVisible(true);
+			}
+		});
+		btnNewButton_3.setIcon(new ImageIcon("C:\\git\\msw\\Swing1\\image\\RegisterButton.jpg"));
+		btnNewButton_3.setBounds(14, 381, 133, 70);
+		tablePanel.add(btnNewButton_3);
 		search.addKeyListener(new KeyAdapter() 
 		{
 			public void keyReleased(KeyEvent e) 
@@ -118,120 +260,6 @@ public class Customer_App {
 		columnModels.getColumn(3).setPreferredWidth(30);
 		columnModels.getColumn(4).setPreferredWidth(10);
 		columnModels.getColumn(5).setPreferredWidth(100);
-		JPanel mainPanel = new JPanel();
-		mainPanel.setBackground(Color.WHITE);
-		mainPanel.setBounds(0, 0, 954, 593);
-		frame.getContentPane().add(mainPanel);
-		mainPanel.setLayout(null);
-		mainPanel.setVisible(false);
-		
-		JLabel lblWelcomeThisIs = new JLabel("Welcome This is Main Panel");
-		lblWelcomeThisIs.setFont(new Font("MS Mincho", Font.BOLD, 30));
-		lblWelcomeThisIs.setBounds(216, 37, 528, 59);
-		mainPanel.add(lblWelcomeThisIs);
-		
-		JLabel lblName = new JLabel("Name");
-		lblName.setHorizontalAlignment(SwingConstants.CENTER);
-		lblName.setFont(new Font("±¼¸²", Font.BOLD, 22));
-		lblName.setBounds(144, 191, 159, 41);
-		mainPanel.add(lblName);
-		
-		JLabel lblAge = new JLabel("Age");
-		lblAge.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAge.setFont(new Font("±¼¸²", Font.BOLD, 22));
-		lblAge.setBounds(144, 286, 159, 41);
-		mainPanel.add(lblAge);
-		
-		JLabel lblGender = new JLabel("Gender");
-		lblGender.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGender.setFont(new Font("±¼¸²", Font.BOLD, 22));
-		lblGender.setBounds(144, 372, 159, 41);
-		mainPanel.add(lblGender);
-		
-		JLabel lblPhone = new JLabel("Phone");
-		lblPhone.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPhone.setFont(new Font("±¼¸²", Font.BOLD, 22));
-		lblPhone.setBounds(532, 116, 159, 41);
-		mainPanel.add(lblPhone);
-		
-		JLabel lblBirthday = new JLabel("Birthday");
-		lblBirthday.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBirthday.setFont(new Font("±¼¸²", Font.BOLD, 22));
-		lblBirthday.setBounds(532, 211, 159, 41);
-		mainPanel.add(lblBirthday);
-		
-		JLabel lblNote = new JLabel("Note");
-		lblNote.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNote.setFont(new Font("±¼¸²", Font.BOLD, 22));
-		lblNote.setBounds(532, 297, 159, 41);
-		mainPanel.add(lblNote);
-		
-		name = new JTextField();
-		name.setFont(new Font("±¼¸²", Font.PLAIN, 19));
-		name.setBounds(271, 183, 241, 62);
-		mainPanel.add(name);
-		name.setColumns(10);
-		
-		age = new JTextField();
-		age.setFont(new Font("±¼¸²", Font.PLAIN, 19));
-		age.setColumns(10);
-		age.setBounds(271, 285, 241, 62);
-		mainPanel.add(age);
-		
-		phone = new JTextField();
-		phone.setFont(new Font("±¼¸²", Font.PLAIN, 19));
-		phone.setColumns(10);
-		phone.setBounds(662, 108, 241, 62);
-		mainPanel.add(phone);
-		
-		birthday = new JTextField();
-		birthday.setFont(new Font("±¼¸²", Font.PLAIN, 19));
-		birthday.setColumns(10);
-		birthday.setBounds(662, 210, 241, 62);
-		mainPanel.add(birthday);
-		
-		JComboBox gender = new JComboBox(new String[] {"Male","Female"});
-		gender.setFont(new Font("±¼¸²", Font.PLAIN, 19));
-		gender.setBackground(Color.WHITE);
-		gender.setBounds(269, 383, 243, 24);
-		mainPanel.add(gender);
-		
-		JTextArea noteTxt = new JTextArea();
-		noteTxt.setBounds(662, 297, 241, 145);
-		noteTxt.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-		mainPanel.add(noteTxt);
-		
-		JButton btnNewButton_1 = new JButton("Submit");
-		btnNewButton_1.addActionListener(new ActionListener() 
-		{
-			public void actionPerformed(ActionEvent arg0) 
-			{
-				String idTxt = ID.getText();
-				String nameTxt = name.getText();
-				String ageTxt = age.getText();
-				String phoneTxt = phone.getText();
-				String genderTxt = gender.getSelectedItem().toString();
-				String note = noteTxt.getText();
-				
-//				customer.createCustomer(idTxt, nameTxt, phoneTxt, genderTxt, ageTxt, note);
-				JOptionPane.showMessageDialog(null, "Your data has been saved successfully");
-				mainPanel.setVisible(false);
-			}
-		});
-		btnNewButton_1.setBounds(278, 484, 330, 49);
-		mainPanel.add(btnNewButton_1);
-		
-		JLabel lblId = new JLabel("ID");
-		lblId.setHorizontalAlignment(SwingConstants.CENTER);
-		lblId.setFont(new Font("±¼¸²", Font.BOLD, 22));
-		lblId.setBounds(144, 116, 159, 41);
-		mainPanel.add(lblId);
-		
-		ID = new JTextField();
-		ID.setFont(new Font("±¼¸²", Font.PLAIN, 19));
-		ID.setColumns(10);
-		ID.setBounds(271, 108, 241, 62);
-		mainPanel.add(ID);
 		frame.getContentPane().add(welcomePanel);
 		
 		JLabel lblLogIn = new JLabel("Log In");
