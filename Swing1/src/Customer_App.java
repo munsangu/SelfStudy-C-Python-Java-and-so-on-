@@ -73,8 +73,6 @@ public class Customer_App {
 	private void initialize() {
 		Customer customer = new Customer();
 		frame = new JFrame();
-		ImagePanel2 welcomePanel = new ImagePanel2(new ImageIcon("C:/git/msw/Swing1/image/Welcome.jpg").getImage());
-		welcomePanel.setBounds(0, 0, 942, 593);
 		frame.setSize(971,640);
 		frame.getContentPane().setLayout(null);
 		String[][] data = customer.getCustomers();
@@ -211,55 +209,8 @@ public class Customer_App {
 		btnNewButton_2.setIcon(new ImageIcon("C:\\git\\msw\\Swing1\\image\\ListButton.jpg"));
 		btnNewButton_2.setBounds(14, 377, 176, 49);
 		mainPanel.add(btnNewButton_2);
-		tablePanel.setLayout(null);
-		JTable table = new JTable(data, headers);
-		table.setRowHeight(30);
-		table.setFont(new Font("MS Mincho",Font.BOLD,15));
-		table.setAlignmentX(0);
-		table.setSize(800, 400);
-		table.setPreferredScrollableViewportSize(new Dimension(800,400));
-		
-		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(151, 180, 710, 387);
-		tablePanel.add(scrollPane);
-		frame.getContentPane().add(tablePanel);
-		
-		search = new JTextField();
-		search.setFont(new Font("MS Mincho", Font.PLAIN, 20));
-		search.setBounds(151, 132, 710, 36);
-		tablePanel.add(search);
-		search.setColumns(10);
-		
-		JButton btnNewButton_3 = new JButton("");
-		btnNewButton_3.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		btnNewButton_3.addActionListener(new ActionListener() 
-			{
-			public void actionPerformed(ActionEvent e) 
-			{
-				tablePanel.setVisible(false);
-				mainPanel.setVisible(true);
-			}
-		});
-		btnNewButton_3.setIcon(new ImageIcon("C:\\git\\msw\\Swing1\\image\\RegisterButton.jpg"));
-		btnNewButton_3.setBounds(14, 381, 133, 70);
-		tablePanel.add(btnNewButton_3);
-		search.addKeyListener(new KeyAdapter() 
-		{
-			public void keyReleased(KeyEvent e) 
-			{
-				String val = search.getText();
-				TableRowSorter<TableModel> trs = new TableRowSorter<>(table.getModel());
-				table.setRowSorter(trs);
-				trs.setRowFilter(RowFilter.regexFilter(val));
-			}
-		});
-		
-		TableColumnModel columnModels = table.getColumnModel();
-		columnModels.getColumn(0).setPreferredWidth(30);
-		columnModels.getColumn(1).setPreferredWidth(100);
-		columnModels.getColumn(3).setPreferredWidth(30);
-		columnModels.getColumn(4).setPreferredWidth(10);
-		columnModels.getColumn(5).setPreferredWidth(100);
+		ImagePanel2 welcomePanel = new ImagePanel2(new ImageIcon("C:/git/msw/Swing1/image/Welcome.jpg").getImage());
+		welcomePanel.setBounds(0, 0, 942, 593);
 		frame.getContentPane().add(welcomePanel);
 		
 		JLabel lblLogIn = new JLabel("Log In");
@@ -313,6 +264,55 @@ public class Customer_App {
 			}
 		});
 		welcomePanel.add(btnNewButton);
+		tablePanel.setLayout(null);
+		JTable table = new JTable(data, headers);
+		table.setRowHeight(30);
+		table.setFont(new Font("MS Mincho",Font.BOLD,15));
+		table.setAlignmentX(0);
+		table.setSize(800, 400);
+		table.setPreferredScrollableViewportSize(new Dimension(800,400));
+		
+		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(151, 180, 710, 387);
+		tablePanel.add(scrollPane);
+		frame.getContentPane().add(tablePanel);
+		
+		search = new JTextField();
+		search.setFont(new Font("MS Mincho", Font.PLAIN, 20));
+		search.setBounds(151, 132, 710, 36);
+		tablePanel.add(search);
+		search.setColumns(10);
+		
+		JButton btnNewButton_3 = new JButton("");
+		btnNewButton_3.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		btnNewButton_3.addActionListener(new ActionListener() 
+			{
+			public void actionPerformed(ActionEvent e) 
+			{
+				tablePanel.setVisible(false);
+				mainPanel.setVisible(true);
+			}
+		});
+		btnNewButton_3.setIcon(new ImageIcon("C:\\git\\msw\\Swing1\\image\\RegisterButton.jpg"));
+		btnNewButton_3.setBounds(14, 381, 133, 70);
+		tablePanel.add(btnNewButton_3);
+		search.addKeyListener(new KeyAdapter() 
+		{
+			public void keyReleased(KeyEvent e) 
+			{
+				String val = search.getText();
+				TableRowSorter<TableModel> trs = new TableRowSorter<>(table.getModel());
+				table.setRowSorter(trs);
+				trs.setRowFilter(RowFilter.regexFilter(val));
+			}
+		});
+		
+		TableColumnModel columnModels = table.getColumnModel();
+		columnModels.getColumn(0).setPreferredWidth(30);
+		columnModels.getColumn(1).setPreferredWidth(100);
+		columnModels.getColumn(3).setPreferredWidth(30);
+		columnModels.getColumn(4).setPreferredWidth(10);
+		columnModels.getColumn(5).setPreferredWidth(100);
 		frame.setJMenuBar(menuBar());
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);

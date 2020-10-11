@@ -32,7 +32,7 @@ import javax.swing.table.TableRowSorter;
 public class App {
 	private final String ID = "msw";
 	private JPasswordField PASS;
-	private JFrame frame;
+	private JFrame frmAccountBook;
 	private JTextField idField;
 	private JPasswordField passField;
 	private JPanel currPanel;//현재 보여지는 패널
@@ -49,7 +49,7 @@ public class App {
 			public void run() {
 				try {
 					App window = new App();
-					window.frame.setVisible(true);
+					window.frmAccountBook.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -69,18 +69,19 @@ public class App {
 	 */
 	private void initialize() {
 		TableData td = new TableData();
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmAccountBook = new JFrame();
+		frmAccountBook.setTitle("Account Book");
+		frmAccountBook.setBounds(100, 100, 450, 300);
+		frmAccountBook.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmAccountBook.getContentPane().setLayout(null);
 	
 		ImagePanel loginPanel = new ImagePanel(new ImageIcon("C:\\git\\msw\\Accounting App\\Image\\theme.jpg").getImage());
 		currPanel  = loginPanel;
 		ImagePanel tranPanel = new ImagePanel(new ImageIcon("C:\\git\\msw\\Accounting App\\Image\\Activation.jpg").getImage());
-		frame.setSize(loginPanel.getDim());
-		frame.setPreferredSize(loginPanel.getDim());
+		frmAccountBook.setSize(loginPanel.getDim());
+		frmAccountBook.setPreferredSize(loginPanel.getDim());
 		ImagePanel sumPanel = new ImagePanel(new ImageIcon("C:\\git\\msw\\Accounting App\\Image\\Activation.jpg").getImage());
-		frame.getContentPane().add(sumPanel);
+		frmAccountBook.getContentPane().add(sumPanel);
 		
 		sumPanel.setVisible(false);
 		
@@ -130,7 +131,7 @@ public class App {
 			}
 		});
 		
-		frame.getContentPane().add(tranPanel);
+		frmAccountBook.getContentPane().add(tranPanel);
 		tranBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
@@ -141,7 +142,7 @@ public class App {
 		});
 		
 		tranPanel.setVisible(false);
-		frame.getContentPane().add(loginPanel);
+		frmAccountBook.getContentPane().add(loginPanel);
 		idField = new JTextField();
 		idField.setFont(new Font("굴림", Font.PLAIN, 26));
 		idField.setBounds(1229, 313, 280, 38);
@@ -281,7 +282,7 @@ public class App {
 				currPanel = sumPanel;
 			}
 		});	
-		frame.pack();
+		frmAccountBook.pack();
 		
 	}
 }
